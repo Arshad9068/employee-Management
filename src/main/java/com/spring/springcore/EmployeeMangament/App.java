@@ -36,6 +36,7 @@ public class App
             sc.nextLine();
             switch (Choice){
                 case 1:
+//                	To Insert new Employee
                 	System.out.println("Enter the employee Id");
                 	int id = sc.nextInt();
                 	sc.nextLine();
@@ -62,6 +63,7 @@ public class App
                 	break;
 
                 case 2:
+//                	To get individual employee
                 	List<Employee> employees = employeeDao.getAllEmployee();
                 	System.out.println("enter the id ");
                 	int eid = sc.nextInt();
@@ -77,13 +79,21 @@ public class App
                 	if(!temp) {
                 		System.out.println("this employee does not exists");
                 	}
-                	Iterator<Employee> it = employees.iterator();
-                	while(it.hasNext()) {
-                		System.out.println(it.next());
+                	
+//                	TO get All Employee
+                	System.out.println("If you want to get all Employee than press 'Y' or 'y'");
+                	char chAll = sc.next().charAt(0);
+                	if(chAll=='y' || chAll=='Y') {
+                		Iterator<Employee> it = employees.iterator();
+                    	while(it.hasNext()) {
+                    		System.out.println(it.next());
+                	}
+                	
                 	}
                     break;
 
                 case 3:
+//                	To Update any detail of a Employee
                     System.out.println("Enter the Id of Employee");
                     int eId = sc.nextInt();
                     sc.nextLine();
@@ -115,6 +125,7 @@ public class App
                     	break;
                     }                                     
                 case 4:
+//                	To delete any Employee 
                 	System.out.println("Enter the employee Id");
                 	int delId = sc.nextInt();
                 	sc.nextLine();
@@ -129,6 +140,7 @@ public class App
                             	System.out.println("Something went Wrong to delete this");
                             }
                             frag1= false;
+//                          This is For Backup of deleted Employee
                             employeeDao.insertBackupEmp(emp);
                             break;
                 		}
@@ -141,6 +153,7 @@ public class App
                     }
                     break;
                 case 5:
+//                	To Create Employee table
                 	try {
                 		employeeDao.createTable();
                     	System.out.println("Succesfully created..");
